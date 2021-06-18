@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPLIFT Password Reset</title>
+    <style>
+        body {
+            font-size: 16px;
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        div {
+            display: flex;
+            flex-flow: column;
+            margin: 10%;
+        }
+        
+        input {
+            margin: 2%;
+            padding: 10px;
+        }
+        
+        button {
+            margin: 2%;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <form> -->
+    <div id="Container">
+        <label for="pass">New Password:</label>
+        <input type="password" id="pass" placeholder="Enter New password" />
+        <label for="passCheck">Confirm Password:</label>
+        <input type="password" id="passCheck" placeholder="Confirm New Password" />
+        <button onclick="sendReq()">Change Password</button>
+    </div>
+    <div id="Done"></div>
+    <!-- </form> -->
+    <script>
+        const sendReq = async() => {
+            const password = document.getElementById('pass').value;
+            const passwordCheck = document.getElementById('passCheck').value;
+
+            let url = window.location.href;
+            url = url.split('/reset-password/')
+
+            const newUrl = url[0] + '/users/update/' + url[1];
+
+            let data = {
+                password: password,
+                passwordCheck: passwordCheck
+            };
+
+            await fetch(newUrl, {
+                headers: {
+                    "content-type": "application/json; charset=UTF-8"
+                },
+                method: "POST",
+                body: JSON.stringify(data)
+            }).then(res => {
+                console.log("Response Complete: ", res);
+                let container = document.getElementById('Container');
+                container.style.display = "none";
+                let message = document.getElementById('Done');
+                message.innerHTML = "Password has been changed!";
+            }).catch(err => console.log(err));
+        };
+    </script>
+</body>
+
+</html>

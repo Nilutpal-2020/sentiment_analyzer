@@ -1,0 +1,20 @@
+.Auth {
+    background-color: white;
+    background-image: url('../../images/text-analysis.png');
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    background-position: right bottom;
+}
+
+.Auth input {
+    width: 50%;
+}
+
+@media (max-width: 600px) {
+    .Auth {
+        background-image: none;
+    }
+    .Auth input {
+        width: 100%;
+    }
+}

@@ -1,0 +1,12 @@
+.Report {
+    margin: auto;
+    padding: 5px;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+}
+
+.Report,
+canvas {
+    height: 640px;
+    width: 480px;
+}

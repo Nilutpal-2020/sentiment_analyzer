@@ -1,0 +1,12 @@
+.Navbar {
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Navbar a {
+    color: black;
+}
+
+.Navbar a:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+}
